@@ -42,7 +42,15 @@ function playSound(key) {
     }
 }
 
-
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
     playSound(event.key);
+    changeColor(event.key);
 });
+
+function changeColor(currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("changeColor");
+    setTimeout(function(){
+        activeButton.classList.remove("changeColor");
+    }, 100 );
+}
