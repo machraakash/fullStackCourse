@@ -14,22 +14,28 @@ function nextSequence() {
         .animate({ opacity: 1.0 }, 100);
 
     playSound(randomChosenColor);
-    
 
-    $(".btn").on("click", function (event) {
-        var userChosenColour = event.target.id;
-        userClickedPattern.push(userChosenColour);
-        console.log("Click Generated userClickedPattern Array: [" + userClickedPattern + "]");
-        playSound(userChosenColour);
-        animatePress(userChosenColour)
-    });
+    level++;
 }
+
+$(".btn").on("click", function (event) {
+    var userChosenColour = event.target.id;
+    userClickedPattern.push(userChosenColour);
+    console.log("Click Generated userClickedPattern Array: [" + userClickedPattern + "]");
+    playSound(userChosenColour);
+    animatePress(userChosenColour)
+});
+
+var level = 0;
+
+$("body").on("keypress", function () {
+    nextSequence();
+    $("h1").text("Level " + level + ".");
+})
 
 //Might be an issue here. The value of randomChosenColor doesn't change after reload. So multiple values are not being stored in gamePattern.
 // Maybe this code should be a part of nextSequece(). 
 // Just saw the comment on udemy. Indeed it should be inside the function. Added.
-nextSequence();
-
 
 function playSound(name) {
     var buttonAudio = new Audio("sounds/" + name + ".mp3");
