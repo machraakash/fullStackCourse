@@ -24,6 +24,7 @@ $(".btn").on("click", function (event) {
     console.log("Click Generated userClickedPattern Array: [" + userClickedPattern + "]");
     playSound(userChosenColour);
     animatePress(userChosenColour)
+    console.log(checkAnswer(userClickedPattern.length));
 });
 
 var level = 0;
@@ -51,4 +52,8 @@ function animatePress(currentColor) {
             $("#" + userClickedButton).removeClass("pressed");
         }, 100);
     })
+};
+
+function checkAnswer(currentLevel) {
+    console.log(currentLevel);
 };
