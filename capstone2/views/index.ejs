@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Akash Blogs</title>
-</head>
-<body>
-    <%- include("partials/header.ejs") %>
-    <h1>MB</h1>
-    <%- include("partials/footer.ejs") %>
-</body>
+  </head>
+  <body>
+    <div>
+      <div><%- include("partials/header.ejs") %></div>
+      <div class="bg-warning">
+        <div class="row">
+          <div class="col background-image">
+            <img src="images/background.webp" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col bg-success">1 of 3</div>
+          <div class="col">2 of 3</div>
+          <div class="col">3 of 3</div>
+        </div>
+      </div>
+      <!-- <div><%- include("partials/footer.ejs") %></div> -->
+    </div>
+  </body>
 </html>
