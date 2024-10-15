@@ -1,3 +1,7 @@
 <%- include("partials/header.ejs") %>
-<h1>Hello, Read this blog</h1>
-<!-- <%- include("partials/footer.ejs") %> -->
+
+<div class="container mt-4">
+<h1 class="display-3 text-center"><strong><%= blogTitle %></strong></h1>
+<h1 class="display-5 justified-text"><%= blogText %></h1>
+</div>
+<%- include("partials/footer.ejs") %>

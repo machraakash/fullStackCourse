@@ -15,6 +15,14 @@
   margin-left: 40px;
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* main body code */
 
 .background-image {
@@ -49,11 +57,17 @@
   text-align: left;
   color: #C8ACD6;
 }
+.row {
+  --bs-gutter-x: 0rem !important;
+}
+.justified-text{
+  text-align: justify;
+}
 
 /* footer code */
 
 footer {
-  margin-top: 30px;
+  margin-top: auto;
   position: relative;
   width: 100%;
   background: #3586ff;
