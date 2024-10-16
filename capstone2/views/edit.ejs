@@ -1,3 +1,28 @@
 <%- include("partials/header.ejs") %>
-<h1>Hello, Edit this blog</h1>
+<h1>Edit blog</h1>
+<div class="container">
+    <form action="/editBlog" method="P">
+      <div class="mb-3 mt-3">
+        <label for="blogTitle" class="form-label">Blog Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="blogTitle"
+          name="blogTitle"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="blogText" class="form-label">Blog Text</label>
+        <textarea
+          class="form-control"
+          id="blogText"
+          name="blogText"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary px-4 me-md-2">Create Blog</button>
+    </form>
+  </div>
 <!-- <%- include("partials/footer.ejs") %> -->

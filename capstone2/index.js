@@ -30,9 +30,12 @@ app.post("/newBlog", (req, res) => {
   res.render("read.ejs", {blogTitle: req.body.blogTitle, blogText: req.body.blogText,})
 });
 
+app.patch("/editBlog", (req, res) =>{
+  res.render("edit.ejs", {blogText, blogTitle})
+})
+
 // "read.ejs", {blogTitle: body.}
 // writdeFile('newBlog.txt', 'Hello Node.js', 'utf8', callback);
-
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
