@@ -17,10 +17,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let data;
 
 app.get("/", (req, res) => {
+<<<<<<< Updated upstream
   res.render("index.ejs", {recipe: data});
 });
 
 app.post("/recipe", (req, res) => {
+=======
+  res.render("index.ejs", { recipe: data });
+});
+
+app.post("/recipe", (req, res) => {
+  switch (req.body.choice) {
+    case "chicken":
+      data = JSON.parse(recipeJSON)[0];
+      break;
+    case "beef":
+      data = JSON.parse(recipeJSON)[1];
+      break;
+    case "fish":
+      data = JSON.parse(recipeJSON)[2];
+      break;
+    default:
+      console.log("pahonch ni reha bhai!");
+  }
+  res.redirect("/");
+>>>>>>> Stashed changes
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.
 });
 
