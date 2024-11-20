@@ -36,6 +36,7 @@
     <section id="cards" class="cards">
       <article class="card-item"></article>
         <% if (locals.data) { %>
+          <h1><%= data.duration %></h1>
         <h2 class="card-activity">
           <%= data.activity %>
         </h2>
@@ -50,7 +51,7 @@
         </div>
         <% console.log(data) %>
         <% } else { %>
-          <h1>Tatti tatti tatti</h1>
+          <h1>No activities that match your criteria.</h1>
           <% } %>
       </article>
 
