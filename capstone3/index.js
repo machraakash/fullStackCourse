@@ -4,22 +4,23 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
-// const API_URL = "https://secrets-api.appbrewery.com";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", { bookData: null, currentError: null});
 });
 
-app.get("/api", async (req, res) => {
+app.post("/submit", async (req, res) => {
     try {
-        const response = await axios.get("https://openlibrary.org/api/books?bibkeys=ISBN%3A0451526996&format=json&jscmd=viewapi");
+        const isbn = req.body["book_isbn"];
+        const response = await axios.get(`https://openlibrary.org/api/books?bibkeys=${isbn}&format=json&jscmd=viewapi`);
         const bookData = response.data;
         console.log(bookData);
-        res.render("index.ejs", { bookData });
+        res.redirect(bookData[isbn].preview_url);
     } catch (error) {
         console.error("failed to make a get request: ", error.message);
+        res.render("index.ejs", { bookData: null, currentError: error.message });
     };
 });
 

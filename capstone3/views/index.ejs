@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Project</title>
-</head>
-<body>
-    <h1><%=bookData['ISBN:0451526996'].preview_url%></h1>
-</body>
+  </head>
+  <body>
+    <%if(currentError){%>
+        <h3 style="color: red;">Please enter a valid ISBN.</h3>
+    <%}else{%>
+    <h2>Please select the ISBN of any book.</h2>
+    <form action="/submit" method="POST">
+      <label for="team_name">Enter Book ISBN: </label>
+      <input
+        id="isbn_name"
+        type="text"
+        name="book_isbn"
+        value="ISBN"
+        placeholder="Enter ISBN (e.g., 0451526996)"
+      />
+      <input type="submit" value="OK" />
+    </form>
+    <% }%>
+  </body>
 </html>
