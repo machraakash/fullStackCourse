@@ -15,12 +15,24 @@ app.get("/random", (req, res) => {
 //2. GET a specific joke
 app.get("/jokes/:id", (req, res) => {
   const requestedId = parseInt(req.params.id);
-  res.json(jokes[requestedId]);
+  res.json(jokes[requestedId-1]);
 });
 //3. GET a jokes by filtering on the joke type
-
+app.get("/filter", (req, res) => {
+  const type = req.query.type;
+  const filteredJokes = jokes.filter((joke) => joke.jokeType === type);
+  res.json(filteredJokes);
+})
 //4. POST a new joke
-
+app.post("/jokes", (req, res) => {
+  const newJoke = {
+  id : jokes.length+1,
+  jokeText : req.body.text,
+  jokeType : req.body.type,
+  };
+  jokes.push(newJoke);
+  res.json(newJoke);
+})
 //5. PUT a joke
 
 //6. PATCH a joke
