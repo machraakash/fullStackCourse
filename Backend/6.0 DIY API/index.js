@@ -34,7 +34,17 @@ app.post("/jokes", (req, res) => {
   res.json(newJoke);
 })
 //5. PUT a joke
-
+app.put("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);//can't be inside editJoke (makes searchIndex unusable)
+  const editJoke = {
+  id,
+  jokeText : req.body.text,
+  jokeType : req.body.type,
+  };
+  const searchIndex = jokes.findIndex((joke) => joke.id === id);
+  jokes[searchIndex] = editJoke;
+  res.json(editJoke);
+})
 //6. PATCH a joke
 
 //7. DELETE Specific joke
