@@ -17,7 +17,6 @@
           <%= locals.totalScore ? totalScore : "0" %>
         </span>
       </h3>
-
     </div>
 
     <h1 id="countryName">
@@ -25,7 +24,6 @@
     </h1>
     <div class="answer-container">
       <input type="text" name="answer" id="userInput" placeholder="Enter the capital" autofocus autocomplete="off">
-
     </div>
     <button type="submit">SUBMIT<% if(locals.wasCorrect){ %>
         <span class="checkmark">✔</span>
@@ -42,8 +40,6 @@
       alert('Game over! Final best score: <%= locals.totalScore %>');
       document.getElementById("app").innerHTML = '<a href="/" class="restart-button">Restart</a>'
     }
-
-
   </script>
 </body>
 
