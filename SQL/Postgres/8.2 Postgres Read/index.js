@@ -6,15 +6,15 @@ const app = express();
 const port = 3000;
 const db = new pg.Client({
   user: "postgres",
-  host:"localhost",
+  host: "localhost",
   database: "Akash",
   password: "Postgres",
-  port: 5432
+  port: 5432,
 });
 
 db.connect();
 
-let quiz;
+let quiz = [];
 
 db.query("SELECT * FROM flags", (err,res) => {
   if(err){
@@ -23,7 +23,7 @@ db.query("SELECT * FROM flags", (err,res) => {
     quiz = res.rows;
   }
   db.end();
-})
+});
 
 let totalCorrect = 0;
 
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
   let answer = req.body.answer.trim();
   let isCorrect = false;
-  if (currentQuestion.capital.toLowerCase() === answer.toLowerCase()) {
+  if (currentQuestion.name.toLowerCase() === answer.toLowerCase()) {
     totalCorrect++;
     console.log(totalCorrect);
     isCorrect = true;
