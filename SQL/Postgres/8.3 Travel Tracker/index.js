@@ -5,29 +5,25 @@ import pg from "pg";
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "akash",
-  password: "postgres23579",
+  database: "Akash",
+  password: "Postgres",
   port: 5432,
 });
 const app = express();
 const port = 3000;
 
 db.connect();
-
-db.query("SELECT * FROM visited_countries", (err, res) => {
-  if(err){
-    console.error("ERROR EXECUTING QUERY", err.stack);
-  }else{
-    console.log("Countries Visited:", res.rows);
-  }
-  db.end();
-});
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
-  //Write your code here.
+  const result = await db.query("SELECT country_code FROM visited_countries");
+  let countries = [];
+  result.rows.forEach((country) =>{
+    countries.push(country.country_code);
+  });
+  res.render("index.ejs", {countries: countries, total: countries.length});
+  db.end();
 });
 
 app.listen(port, () => {
