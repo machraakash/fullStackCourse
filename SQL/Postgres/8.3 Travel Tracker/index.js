@@ -5,8 +5,8 @@ import pg from "pg";
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "akash",
-  password: "postgres23579",
+  database: "Akash",
+  password: "Postgres",
   port: 5432,
 });
 const app = express();
@@ -26,7 +26,6 @@ async function checkVisisted() {
   });
   return countries;
 }
-
 // GET home page
 app.get("/", async (req, res) => {
   const countries = await checkVisisted();
@@ -36,22 +35,35 @@ app.get("/", async (req, res) => {
 //INSERT new country
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
+  console.log("Received country input:", input);
 
-  const result = await db.query(
-    "SELECT country_code FROM countries WHERE country_name = $1",
-    [input]
-  );
+  try {
+    const result = await db.query(
+      "SELECT country_code FROM countries WHERE country_name = $1",
+      [input]
+    );
 
-  if (result.rows.length !== 0) {
-    const data = result.rows[0];
-    const countryCode = data.country_code;
+    console.log("Query result for country_code:", result.rows);
 
-    await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [
-      countryCode,
-    ]);
+    if (result.rows.length !== 0) {
+      const countryCode = result.rows[0].country_code;
+      console.log("Inserting country_code into visited_countries:", countryCode);
+
+      await db.query(
+        "INSERT INTO visited_countries (country_code) VALUES ($1)",
+        [countryCode]
+      );
+
+      console.log("Insert successful");
+    } else {
+      console.log("No matching country found");
+    }
+
     res.redirect("/");
+  } catch (error) {
+    console.error("FULL ERROR in /add route:\n", error); // Log full error
+    res.status(500).send("Something went wrong");
   }
-  db.end();
 });
 
 app.listen(port, () => {
