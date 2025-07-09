@@ -1,0 +1,16 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  <div>
+    <h1>Favourite food</h1>
+    <ul>
+      <li>Creamy garlic chicken</li>
+      <li>Macrons</li>
+      <li>Keema Naan</li>
+      <li>Pizza</li>
+      <li>Ramen</li>
+    </ul>
+  </div>,
+  document.getElementById("root")
+);
