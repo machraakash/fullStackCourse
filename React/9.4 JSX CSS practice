@@ -1,0 +1,16 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  <div>
+    <h1>Favourite food</h1>
+    <div>
+      <img src="https://www.budgetbytes.com/wp-content/uploads/2024/02/Creamy-Garlic-Chicken-Pan.jpg" />
+      <img src="https://www.allrecipes.com/thmb/p4f6RaeEnKTJyE4PVm9dzyMKUMc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-636266048-2000-4fe716c6d4584ec4b6ccab88125d4cef.jpg" />
+      <img src="https://www.teaforturmeric.com/wp-content/uploads/2024/08/Keema-Naan-10.jpg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg" />
+      <img src="https://soomfoods.com/cdn/shop/articles/45_d115125d-8365-4865-af0e-5a8f42b577af_1600x.png?v=1750100505" />
+    </div>
+  </div>,
+  document.getElementById("root")
+);
